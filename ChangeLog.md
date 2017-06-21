@@ -1,3 +1,30 @@
+#2.3.5
+  * Ensure that hidden blueprint effects are applied when a blueprint is selected
+  * Handle display when summary values show thrusters disabled but current mass keeps them enabled
+  * Added updated German translations (thanks to @sweisgerber-dev)
+  * Power state (enabled and priority) now follows modules when they are swapped or copied
+  * Grey out modules that are powered off to provide a clearer visual indication
+  * Use coriolis-data 2.3.5:
+    * Fix list of available blueprints for Point Defence
+    * Fix integrity values for class 6 power plants
+    * Add shot speed for long range weapon
+    * Fix components for dirty drive grade 3
+    * Update values for Cytoscrambler
+
+#2.3.4
+  * Fix crash when removing the special effect from a module
+  * Ensure comparisons with saved stock ships work correctly
+  * Add 'Racer' role
+  * Tidy up shipyard page; remove units from data columns and re-order for legibility
+  * Allow basic drag/drop functionality in Edge/Internet Explorer 11 browser
+  * Provide separate special effects for dumbfire and seeker missiles
+  * Include special effect modifiers in blueprint tooltip
+  * Use coriolis-data 2.3.4:
+    * Add missing Long Range blueprint to multi-cannon
+    * Fix values for thermal load of focused weapon grade 4
+    * Fix internal module information for power plant blueprints
+    * Add 'FSD Interrupt' special to dumbfire missile racks; this module now has `specials_S` and `specials_D` keys for specials to differentiate
+
 #2.3.3
   * Remove unused blueprint when hitting reset
   * Add 'purchase module' external link to EDDB for refit items

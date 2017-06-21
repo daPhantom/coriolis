@@ -119,12 +119,11 @@ export default class ModuleSet {
   /**
    * Find the lightest Power Distributor that provides sufficient
    * energy to boost.
-   * @param  {number} boostEnergy [description]
+   * @param  {number} boostEnergy The energy that is required to boost
    * @return {Object}             Power Distributor
    */
   lightestPowerDist(boostEnergy) {
     let pd = this.standard[4][0];
-
     for (let p of this.standard[4]) {
       if (p.mass < pd.mass && p.engcap > boostEnergy) {
         pd = p;
@@ -168,14 +167,15 @@ export default class ModuleSet {
   /**
    * Find the lightest Power Plant that provides sufficient power
    * @param  {number} powerNeeded Power requirements in MJ
+   * @param  {string} rating      The optional rating of the power plant
    * @return {Object}             Power Plant
    */
-  lightestPowerPlant(powerNeeded) {
+  lightestPowerPlant(powerNeeded, rating) {
     let pp = this.standard[0][0];
 
     for (let p of this.standard[0]) {
       // Provides enough power, is lighter or the same mass as current power plant but better output/efficiency
-      if (p.pgen >= powerNeeded && (p.mass < pp.mass || (p.mass == pp.mass && p.pgen > pp.pgen))) {
+      if (p.pgen >= powerNeeded && (p.mass < pp.mass || (p.mass == pp.mass && p.pgen > pp.pgen)) && (!rating || rating == p.rating)) {
         pp = p;
       }
     }

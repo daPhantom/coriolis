@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cn from 'classnames';
 import Persist from '../stores/Persist';
 import TranslatedComponent from './TranslatedComponent';
@@ -17,14 +18,14 @@ import { blueprintTooltip } from '../utils/BlueprintFunctions';
 export default class StandardSlot extends TranslatedComponent {
 
   static propTypes = {
-    slot: React.PropTypes.object,
-    modules: React.PropTypes.array.isRequired,
-    onSelect: React.PropTypes.func.isRequired,
-    onOpen: React.PropTypes.func.isRequired,
-    onChange: React.PropTypes.func.isRequired,
-    ship: React.PropTypes.object.isRequired,
-    selected: React.PropTypes.bool,
-    warning: React.PropTypes.func,
+    slot: PropTypes.object,
+    modules: PropTypes.array.isRequired,
+    onSelect: PropTypes.func.isRequired,
+    onOpen: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
+    ship: PropTypes.object.isRequired,
+    selected: PropTypes.bool,
+    warning: PropTypes.func,
   };
 
   /**
@@ -94,7 +95,7 @@ export default class StandardSlot extends TranslatedComponent {
 
     return (
       <div className={cn('slot', { selected: this.props.selected })} onClick={this.props.onOpen} onContextMenu={stopCtxPropagation}>
-        <div className={cn('details-container', { warning: warning && warning(slot.m) })}>
+        <div className={cn('details-container', { warning: warning && warning(slot.m), disabled: m.grp !== 'bh' && !slot.enabled })}>
           <div className={'sz'}>{slot.maxClass}</div>
           <div>
             <div className={'l'}>{classRating} {translate(m.name || m.grp)}{m.mods && Object.keys(m.mods).length > 0 ? <span className='r' onMouseOver={termtip.bind(null, modTT)} onMouseOut={tooltip.bind(null, null)}><Modified /></span> : null }</div>
